@@ -29,7 +29,7 @@
 
 # require "http"
 
-# response = HTTP.get("https://api.zippopotam.us/us/33434")
+# response = HTTP.get("https://api.zippopotam.us/us/78749")
 # zip_data = response.parse(:json)
 
 # # show all info for specfic zip code
@@ -40,4 +40,28 @@
 
 # puts "#{zip_data}"
 
-# ## practice 3 -  ##
+# ## practice 3 - Weather App ##
+
+require "http"
+
+response = HTTP.get("https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=&units=imperial")
+
+weather_data = response.parse(:json)
+
+# temp
+temperature = weather_data["main"]["temp"]
+
+# weather description
+weather_description = weather_data["weather"][0]["description"]
+
+# city name
+city_name = weather_data["name"]
+
+# make it user friendly
+# ex: "It is currently 80 degrees and cloudy in austin"
+
+p "It is currently #{temperature} degrees and #{weather_description} in #{city_name}."
+
+# p temperature
+# p weather_description
+# p city_name
